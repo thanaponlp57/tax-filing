@@ -37,7 +37,7 @@ import { ReviewsAndConfirmPageComponent } from './tax-filing/pages/reviews-and-c
     AppRoutingModule,
     FormsModule,
   ],
-  providers: []
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
