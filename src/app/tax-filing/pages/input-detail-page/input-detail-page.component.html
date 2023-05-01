@@ -1,0 +1,79 @@
+<div class="tax-filing-form">
+  <p class="fw-semibold fs-2">1. Tax Filing Detail</p>
+  <hr>
+
+  <p class="fs-4 mt-5">Type of filing<span class="text-danger"> *</span></p>
+  <app-filing-type [filingTypes]="filingTypes" (getFilingType)="setFilingType($event)"></app-filing-type>
+
+  <p class="fs-4 mt-5">VAT Month<span class="text-danger"> *</span></p>
+
+  <div class="btn-group">
+    <app-month [months]="months" (getMonth)="setMonth($event)" class="me-4"></app-month>
+    <app-year [years]="years" (getYear)="setYear($event)"></app-year>
+  </div>
+
+  <div class="row align-items-center mt-5">
+    <div class="col-9">
+      <p class="fw-semibold fs-2">2. Tax Computation</p>
+    </div>
+    <div class="col-3 text-end">
+      <u><span class="fs-5">View Exchange Rate</span></u>
+    </div>
+  </div>
+  <hr>
+
+  <p class="fw-semibold fs-4 mt-5">Provide total value taxable electronic service<span class="text-danger"> *</span></p>
+  <div class="row align-items-center">
+    <div class="col-9">
+      <p class="fs-4">1. Total value of taxable electornic service exclusive of VAT</p>
+    </div>
+    <div class="col-3 text-end">
+      <app-sale-amount (getSaleAmount)="setSaleAmount($event)"></app-sale-amount>
+    </div>
+  </div>
+  <div class="row align-items-center mt-3">
+    <div class="col-9">
+      <p class="fs-4">2. Total VAT to be remitted (7% of1.)</p>
+    </div>
+    <div class="col-3 text-end">
+      <app-tax-amount [saleAmount]="saleAmount" [taxRate]="taxRate7Percent" [roundedBy]="3"
+        (getTaxAmount)="setTaxAmount($event)"
+        (getIsTaxAmountWithinRange)="setIsTaxAmountWithinRange($event)"></app-tax-amount>
+    </div>
+  </div>
+
+  <div *ngIf="filingType.value === additionalFilingType">
+    <p class="fw-semibold fs-4 mt-5">In-case of late filing and payment, or additional filling</p>
+
+    <div class="row align-items-center mt-3">
+      <div class="col-9">
+        <p class="fs-4">3. Surcharge</p>
+      </div>
+      <div class="col-3 text-end">
+        <app-surcharge [taxAmount]="taxAmount" [surchargeRate]="surchargeRate10Percent" [roundedBy]="3"
+          (getSurcharge)="setSurcharge($event)"></app-surcharge>
+      </div>
+    </div>
+
+    <div class="row align-items-center mt-3">
+      <div class="col-9">
+        <p class="fs-4">4. Penalty</p>
+      </div>
+      <div class="col-3 text-end">
+        <app-penalty [penaltyRate]="penaltyRate200PerUnit" (getPenalty)="setPenalty($event)"></app-penalty>
+      </div>
+    </div>
+
+    <div class="row align-items-center mt-3">
+      <div class="col-9">
+        <p class="fs-4">5. Total amount of VAT, surcharge, and penalty to be remitted</p>
+      </div>
+      <div class="col-3 text-end">
+        <app-total-amount [taxAmount]="taxAmount" [surcharge]="surcharge" [penalty]="penalty"
+          (getTotalAmount)="setTotalAmount($event)"></app-total-amount>
+      </div>
+    </div>
+  </div>
+
+
+</div>

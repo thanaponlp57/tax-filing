@@ -1,0 +1,81 @@
+<!-- {{
+inputDetailPage | json
+}} -->
+
+<div class="tax-filing-form" *ngIf="inputDetailPage">
+    <p class="fw-semibold fs-2">Tax Filing Detail</p>
+    <hr>
+
+    <div class="row align-items-center mt-4">
+        <div class="col-3">
+            <p class="fw-semibold fs-4">Type of filing</p>
+        </div>
+        <div class="col-9">
+            <span class="fs-5">{{ inputDetailPage.filingType.label }}</span>
+        </div>
+    </div>
+
+    <div class="row align-items-center">
+        <div class="col-3">
+            <p class="fw-semibold fs-4">VAT Month</p>
+        </div>
+        <div class="col-9">
+            <span class="fs-5">{{ inputDetailPage.month.label }} {{inputDetailPage.year.label}}</span>
+        </div>
+    </div>
+
+    <div class="row align-items-center mt-5">
+        <div class="col-12">
+            <p class="fw-semibold fs-2">Tax Computation</p>
+        </div>
+    </div>
+    <hr>
+
+    <div class="row align-items-center">
+        <div class="col-9">
+            <p class="fw-semibold fs-4">Total value of taxable electronic service exclusive of VAT</p>
+        </div>
+        <div class="col-3 text-end">
+            <span class="fs-5">{{ inputDetailPage.saleAmount }} THB</span>
+        </div>
+    </div>
+
+    <div class="row align-items-center">
+        <div class="col-9">
+            <p class="fw-semibold fs-4">Total VAT to be remitted (7% of1.)</p>
+        </div>
+        <div class="col-3 text-end">
+            <span class="fs-5">{{ inputDetailPage.taxAmount }} THB</span>
+        </div>
+    </div>
+
+    <div *ngIf="inputDetailPage.filingType.value === additionalFilingType">
+        <div class="row align-items-center">
+            <div class="col-9">
+                <p class="fw-semibold fs-4">Surcharge</p>
+            </div>
+            <div class="col-3 text-end">
+                <span class="fs-5">{{ inputDetailPage.surcharge }} THB</span>
+            </div>
+        </div>
+
+        <div class="row align-items-center">
+            <div class="col-9">
+                <p class="fw-semibold fs-4">Penalty</p>
+            </div>
+            <div class="col-3 text-end">
+                <span class="fs-5">{{ inputDetailPage.penalty }} THB</span>
+            </div>
+        </div>
+
+        <div class="row align-items-center">
+            <div class="col-9">
+                <p class="fw-semibold fs-4">Total amount of VAT, surcharge, and penalty to be remitted</p>
+            </div>
+            <div class="col-3 text-end">
+                <span class="fs-5">{{ inputDetailPage.totalAmount }} THB</span>
+            </div>
+        </div>
+    </div>
+
+</div>

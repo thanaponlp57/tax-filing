@@ -1,0 +1,109 @@
+$primary-color: #102a43;
+$secondary-color: #d9e2ec;
+$text-color-inactive: #9fb3c8;
+
+.stepper {
+    display: table;
+    width: 30%;
+    margin: 0 auto;
+
+    .step {
+        display: table-cell;
+        position: relative;
+        padding: 1.5rem;
+        width: 25%;
+
+        .step-title {
+            margin-top: 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            color: $text-color-inactive;
+        }
+
+        .step-circle {
+            width: 2rem;
+            height: 2rem;
+            margin: 0 auto;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 1.75rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: 2px solid $secondary-color;
+        }
+
+        &.editing {
+            .step-circle {
+                background: #ffffff;
+                border-color: $primary-color;
+                color: $primary-color;
+            }
+
+            .step-title {
+                color: $primary-color;
+                font-weight: bolder;
+            }
+        }
+
+        &.done {
+            .step-circle {
+                background-color: $primary-color;
+                border: 2px solid $primary-color;
+                color: #ffffff;
+            }
+        }
+
+        &.done .step-bar-right {
+            background-color: $primary-color;
+            border-color: $primary-color;
+            width: calc(100% - 2rem);
+            font-weight: bolder;
+        }
+
+        .step-bar-left,
+        .step-bar-right {
+            position: absolute;
+            top: calc(2rem + 5px);
+            height: 5px;
+            background-color: $secondary-color;
+            border: solid $secondary-color;
+            border-width: 2px 0;
+        }
+
+        .step-bar-left {
+            width: calc(100% - 2rem);
+            left: 50%;
+            margin-left: 1rem;
+        }
+
+        .step-bar-right {
+            width: 0;
+            left: 50%;
+            margin-left: 1rem;
+        }
+
+        &:last-child .step-bar-left,
+        &:last-child .step-bar-right {
+            display: none;
+        }
+
+    }
+}
+
+hr {
+    margin: 0 0 0.625rem 0;
+    opacity: 1;
+    border-top: 0.1875rem solid;
+    color: $secondary-color;
+}
+
+
+.tax-filing-form {
+    padding: 4rem 4rem 1.3rem 4rem;
+    border-radius: 0.25rem;
+    border: solid 2px;
+    width: 80%;
+    min-height: auto;
+    margin: auto;
+}

@@ -1,0 +1,16 @@
+$primary-color: #102a43;
+
+// * {
+//     font-size: 1.5rem;
+// }
+
+label {
+    margin-left: 1.5625rem;
+}
+
+input[type="radio"] {
+    accent-color: $primary-color;
+    vertical-align: top;
+    width: 2.2rem;
+    height: 2.2rem;
+}

@@ -1,0 +1,14 @@
+<div
+  class="form-check-inline fs-4"
+  *ngFor="let filingType of filingTypes; let i = index"
+>
+  <input
+    id="filingType{{ i + 1 }}"
+    name="filingType{{ i + 1 }}"
+    type="radio"
+    [value]="filingType.value"
+    [(ngModel)]="selectedfilingType"
+    (ngModelChange)="emitFilingType(filingType)"
+  />
+  <label for="filingType{{ i + 1 }}">{{ filingType.label }}</label>
+</div>

@@ -1,0 +1,65 @@
+<nav class="navbar justify-content-end p-4">
+  <span>Time in Thailand: 15:57 (GMT+7) | 1st October 2021</span>
+  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle mx-4"
+    viewBox="0 0 16 16">
+    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+    <path fill-rule="evenodd"
+      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+  </svg>
+  <strong><u>Lorem Co Ltd.</u></strong>
+  <span class="triangle"></span>
+</nav>
+<hr>
+
+<h1 class="text-center">Submit Tax Filing</h1>
+
+<div class="stepper">
+  <div class="step {{ currentStep === 1 ? 'editing' : 'done'}}">
+    <div class="step-circle"><span>1</span></div>
+    <div class="step-title">Input Detail</div>
+    <div class="step-bar-left"></div>
+    <div class="step-bar-right"></div>
+  </div>
+  <div class="step {{ currentStep === 2 ? 'editing' : ''}}">
+    <div class="step-circle"><span>2</span></div>
+    <div class="step-title">Review & Confirm</div>
+    <div class="step-bar-left"></div>
+    <div class="step-bar-right"></div>
+  </div>
+</div>
+
+
+
+<div class="container" style="position: relative;">
+  <app-input-detail-page *ngIf="currentStep === 1" (getInputDetailPage)="setInputDetailPage($event);"></app-input-detail-page>
+  <app-reviews-and-confirm-page  *ngIf="currentStep === 2" (getTaxData)="setTaxData($event)" [inputDetailPage]="inputDetailPage"></app-reviews-and-confirm-page>
+
+  <div *ngIf="currentStep === 1" class="btn-group mt-3 margin-left-8" role="group" aria-label="Basic example1">
+    <button class="btn btn-outline-dark btn-lg rounded-pill px-5 me-md-4" (click)="back()">Back</button>
+    <button class="btn btn-dark btn-lg rounded-pill px-5" (click)="next(inputDetailPage); isNextClicked = true" >Next</button>
+    <p *ngIf="isNextClicked && !inputDetailPage" class="text-danger ms-4 ">Invalid Data</p>
+  </div>
+
+  <div *ngIf="currentStep === 2" class="btn-group mt-3 start-50 translate-middle-x" role="group" aria-label="Basic example2">
+    <button class="btn btn-dark btn-lg rounded-pill px-4 "  data-bs-toggle="modal" data-bs-target="#exampleModal">Confirm and Submit</button>
+  </div>
+  
+</div>
+
+<!-- Confirm and Submit Modal -->
+<div *ngIf="taxData" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">TaxData Model</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {{ taxData | json}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

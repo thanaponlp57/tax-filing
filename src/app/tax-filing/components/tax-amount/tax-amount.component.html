@@ -1,0 +1,12 @@
+<input
+  type="number"
+  placeholder="THB"
+  [(ngModel)]="taxAmount"
+  (ngModelChange)="
+    emitTaxAmount(taxAmount);
+    emitIsTaxAmountWithinRange(generateIsTaxAmountWithinRange(originalTaxAmount, taxAmount))
+  "
+/>
+<p class="text-danger">
+  {{ generateIsTaxAmountWithinRange(originalTaxAmount, taxAmount) ? "" : "Invalid Tax"}}
+</p>

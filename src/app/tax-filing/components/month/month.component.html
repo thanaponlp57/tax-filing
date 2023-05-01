@@ -1,0 +1,25 @@
+<div class="dropdown">
+    <button
+      class="btn btn-outline-dark btn-lg dropdown-toggle"
+      type="button"
+      id="month"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      {{ selectedMonth ? selectedMonth.label : "Month" }}
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="month">
+      <li *ngFor="let month of months">
+        <button
+          class="dropdown-item"
+          name="month"
+          type="button"
+          [value]="month.value"
+          (click)="setMonth(month); emitMonth(month)"
+          [disabled]="month.isPastMonth"
+        >
+          {{ month.label }}
+        </button>
+      </li>
+    </ul>
+  </div>
