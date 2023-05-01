@@ -9,9 +9,6 @@ export class SaleAmountComponent{
 
   public saleAmount!: number;
 
-  public myValue!: string;
-  public interacted: boolean = false;
-
   @Output() getSaleAmount = new EventEmitter<number>();
 
   public emitSaleAmount(saleAmount: number): void {
