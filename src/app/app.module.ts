@@ -16,8 +16,6 @@ import { TotalAmountComponent } from './tax-filing/components/total-amount/total
 import { InputDetailPageComponent } from './tax-filing/pages/input-detail-page/input-detail-page.component';
 import { ReviewsAndConfirmPageComponent } from './tax-filing/pages/reviews-and-confirm-page/reviews-and-confirm-page.component';
 
-import { NgxCurrencyModule } from "ngx-currency";
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,9 +36,8 @@ import { NgxCurrencyModule } from "ngx-currency";
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgxCurrencyModule
   ],
-  providers: [],
+  providers: []
   bootstrap: [AppComponent]
 })
 export class AppModule { }
